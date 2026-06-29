@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>비밀 금고 해킹 터미널 (14단계)</title>
+    <title>비밀 금고 해킹 터미널 (13단계)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Sans+KR:wght@400;700&display=swap');
 
@@ -32,7 +32,7 @@
 
         .terminal-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             border: 2px solid var(--border-color);
             border-radius: 8px;
             background: #000;
@@ -65,7 +65,7 @@
 
         .content-area {
             padding: 30px 40px;
-            min-height: 350px;
+            min-height: 380px;
             display: flex;
             flex-direction: column;
         }
@@ -75,15 +75,16 @@
             font-size: 1.6em;
             border-bottom: 1px dashed var(--text-color);
             padding-bottom: 10px;
+            color: #fff;
         }
 
         p#stage-desc {
             font-size: 1.2em;
-            line-height: 1.6;
+            line-height: 1.7;
             white-space: pre-line;
             margin-bottom: 20px;
             flex-grow: 1;
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Share Tech Mono', 'Noto Sans KR', monospace;
         }
 
         .hint-box {
@@ -192,12 +193,12 @@
 
     <div class="terminal-container" id="game-container">
         <div class="terminal-header">
-            <span>> ROOT_ACCESS // 14_STAGE_PROTOCOL</span>
+            <span>> ROOT_ACCESS // 13_STAGE_PROTOCOL</span>
             <span>PLAY TIME : <span id="timer">00:00</span></span>
         </div>
 
         <div class="progress-bar" id="progress-bar">
-            [□□□□□□□□□□□□□□] 0/14
+            [□□□□□□□□□□□□□] 0/13
         </div>
 
         <div class="content-area" id="play-area">
@@ -232,85 +233,79 @@
         const stages = [
             {
                 title: "STAGE 01 : 숨겨진 수식",
-                desc: "[ D + O + G = 26 ]\n[ C + A + T = 24 ]\n\n그렇다면,\n[ M + A + T + H = ? ]",
+                desc: "시스템 접근을 위한 첫 번째 인증 절차입니다.\n각 문자에 부여된 고유의 일련번호를 해독하여 다음 수식의 결괏값을 도출하십시오.\n\n[ D + O + G = 26 ]\n[ C + A + T = 24 ]\n\n[ M + A + T + H = ? ]",
                 answer: "42",
                 hint: "알파벳의 순서에 주목하세요. (A=1, B=2, C=3... Z=26)"
             },
             {
-                title: "STAGE 02 : 어긋난 글자들",
-                desc: "[ F D W -> C A T ]\n[ G R J -> D O G ]\n\n그렇다면,\n[ K H O O R -> ? ]",
+                title: "STAGE 02 : 카이사르의 톱니바퀴",
+                desc: "암호화 톱니바퀴가 일정한 간격으로 어긋나 있습니다.\n입력과 출력의 패턴을 분석하여 손상된 데이터를 복구하십시오.\n\n[ F D W -> C A T ]\n[ G R J -> D O G ]\n\n복구할 데이터:\n[ K H O O R -> ? ]",
                 answer: "HELLO",
                 hint: "알파벳이 일정하게 밀려있습니다. K보다 3칸 '앞'에 있는 글자는 무엇일까요?"
             },
             {
-                title: "STAGE 03 : 거울의 방",
-                desc: "[ Z Y X -> A B C ]\n[ Y L B -> B O Y ]\n\n그렇다면,\n[ N Z G S -> ? ]",
+                title: "STAGE 03 : 거울 차원의 통신",
+                desc: "알파벳 체계가 정확히 반대로 뒤집힌 차원으로부터 메시지가 수신되었습니다.\n대칭의 원리를 이용해 해독하십시오.\n\n[ Z Y X -> A B C ]\n[ Y L B -> B O Y ]\n\n수신된 메시지:\n[ N Z G S -> ? ]",
                 answer: "MATH",
                 hint: "알파벳을 시작과 끝에서부터 거꾸로 짝지어 보세요. (Z=A, Y=B, X=C...)"
             },
             {
                 title: "STAGE 04 : 시선의 이동",
-                desc: "[ R -> T ]\n[ G -> H ]\n[ I -> O ]\n\n그렇다면,\n[ P [ R M -> ? ]",
+                desc: "해답은 멀리 있지 않습니다.\n당신의 손끝과 시선이 머무는 곳, 바로 '키보드 자판'의 물리적 배열을 관찰하십시오.\n\n[ R -> T ]\n[ G -> H ]\n[ I -> O ]\n\n목표 단어:\n[ P [ R M -> ? ]",
                 answer: "OPEN",
-                hint: "당신의 눈앞에 있는 컴퓨터 '키보드 자판'을 내려다보세요. 해당 키의 '왼쪽' 키는 무엇인가요?"
+                hint: "키보드를 내려다보세요. 해당 키의 바로 '왼쪽'에 있는 키는 무엇인가요?"
             },
             {
-                title: "STAGE 05 : 지그재그의 함정",
-                desc: "[ M T A H -> M A T H ]\n[ A P E P L -> A P P L E ]\n\n그렇다면,\n[ H C E A K R -> ? ]",
+                title: "STAGE 05 : 지그재그 데이터 스트림",
+                desc: "데이터 패킷이 두 개의 라인으로 분산되어 전송되었습니다.\n단어를 지그재그로 분할한 뒤, 상단과 하단을 재조합하는 규칙을 찾아내십시오.\n\n[ M T A H -> M A T H ]\n[ A P E P L -> A P P L E ]\n\n재조합 대상:\n[ H C E A K R -> ? ]",
                 answer: "HACKER",
                 hint: "암호문을 절반으로 나누어 윗줄과 아랫줄에 적은 뒤, 위-아래 번갈아 가며 지그재그로 읽어보세요."
             },
             {
                 title: "STAGE 06 : 혼돈 속의 질서",
-                desc: "[ E T N -> T E N ]\n[ W O T -> T W O ]\n\n그렇다면,\n[ O Z E R -> ? ]",
+                desc: "시스템 오류로 알파벳의 배열이 무작위로 섞여버렸습니다.\n문자들의 원형을 유추하여 올바른 '숫자' 영단어를 입력하십시오.\n\n[ E T N -> T E N ]\n[ W O T -> T W O ]\n\n오류 데이터:\n[ O Z E R -> ? ]",
                 answer: "ZERO",
-                hint: "알파벳의 순서가 무작위로 섞여 있습니다. 이리저리 조합하여 뜻이 있는 영어 숫자를 만들어보세요."
+                hint: "순서가 뒤죽박죽입니다. 이리저리 조합하여 뜻이 있는 영어 숫자를 만들어보세요."
             },
             {
-                title: "STAGE 07 : 숨겨진 메시지",
-                desc: "가방 안에 있는\n위대한 유산\n-> 가위\n\n비상사태 발생.\n밀실을 탈출하라.\n-> 비밀\n\n그렇다면,\n\n소리 없이 다가오는 위협.\n수많은 데이터가 파괴되기 전에 막아라.\n-> ?",
-                answer: "소수",
+                title: "STAGE 07 : 해커의 선전포고",
+                desc: "알 수 없는 발신자로부터 기괴한 경고문이 도착했습니다.\n텍스트 더미 속에 숨겨진 5글자의 핵심 키워드를 찾아내십시오.\n\n소리 없이 다가온 시스템의 붕괴.\n인류가 쌓아온 모든 암호 체계가\n수많은 해커들의 공격에 노출되었다.\n분석과 해독을 통해 방어막을 재구축하라.\n해답은 오직 수학의 섭리 안에 있다.",
+                answer: "소인수분해",
                 hint: "각 문장의 가장 첫 번째 글자들만 세로로 이어서 읽어보세요."
             },
             {
-                title: "STAGE 08 : 감옥의 격자",
-                desc: "[ C = 13 ] [ H = 23 ] [ M = 32 ] [ Z = 55 ]\n\n그렇다면,\n[ 34 35 15 33 -> ? ]",
-                answer: "OPEN",
-                hint: "알파벳을 5x5 표에 순서대로 넣었을 때의 행(가로)과 열(세로) 번호입니다. O는 3번째 줄 4번째 칸입니다."
-            },
-            {
-                title: "STAGE 09 : 특별한 위치",
-                desc: "[ A B C D E F G H I -> B C E G ]\n\n그렇다면,\n[ A S O B L C V D E F E -> ? ]",
+                title: "STAGE 08 : 특별한 위치",
+                desc: "수많은 더미(Dummy) 데이터 속에 진짜 메시지가 흩어져 있습니다.\n'가장 고립된 숫자'들의 위치에 주목하십시오.\n\n[ A B C D E F G H I -> B C E G ]\n\n추출 대상:\n[ A S O B L C V D E F E -> ? ]",
                 answer: "SOLVE",
                 hint: "알파벳의 위치가 2번째, 3번째, 5번째, 7번째, 11번째... 즉 '소수(Prime)' 자리에 있는 글자만 뽑아보세요."
             },
             {
-                title: "STAGE 10 : 자연의 번식",
-                desc: "[ 2, 4, 6, 10, 16, 26 ]\n\n그렇다면,\n[ 1, 1, 2, 3, 5, 8, ? ]",
+                title: "STAGE 09 : 자연의 번식 알고리즘",
+                desc: "이 수열은 단순한 숫자의 나열이 아닌, 자연계의 성장 알고리즘입니다.\n생장의 규칙을 찾아 다음 세대를 예측하십시오.\n\n[ 2, 4, 6, 10, 16, 26 ]\n\n예측 대상:\n[ 1, 1, 2, 3, 5, 8, ? ]",
                 answer: "13",
                 hint: "바로 앞의 두 숫자를 더해보세요. 다음 숫자를 예측할 수 있습니다."
             },
             {
-                title: "STAGE 11 : 개수의 규칙",
-                desc: "[ 10 -> 4 ]\n[ 20 -> 6 ]\n[ 25 -> 3 ]\n\n그렇다면,\n[ 100 -> ? ]",
+                title: "STAGE 10 : 약수 추출기",
+                desc: "좌측의 값은 원래의 수, 우측의 값은 그 수를 구성하는 '특정 요소의 총개수'를 의미합니다.\n\n[ 10 -> 4 ]\n[ 20 -> 6 ]\n[ 25 -> 3 ]\n\n분석 대상:\n[ 100 -> ? ]",
                 answer: "9",
                 hint: "왼쪽 숫자의 '약수의 개수'가 바로 오른쪽 숫자입니다. 100의 약수는 모두 몇 개인가요?"
             },
             {
-                title: "STAGE 12 : 남겨진 자",
-                desc: "원형으로 서서 1번부터 2번째 사람을 차례로 뺀다.\n\n[ 2명일 때 -> 1번 생존 ]\n[ 3명일 때 -> 3번 생존 ]\n[ 4명일 때 -> 1번 생존 ]\n[ 5명일 때 -> 3번 생존 ]\n\n그렇다면,\n[ 32명일 때 -> ?번 생존 ]",
+                title: "STAGE 11 : 죽음의 원 순열 (요세푸스 딜레마)",
+                desc: "군사들이 원형으로 둘러서서 1번부터 시작해 자기 옆에 있는 2번째 사람을 차례로 제거하는 시뮬레이션입니다.\n\n[ 2명일 때 -> 1번 생존 ]\n[ 3명일 때 -> 3번 생존 ]\n[ 4명일 때 -> 1번 생존 ]\n[ 5명일 때 -> 3번 생존 ]\n\n최종 시뮬레이션:\n[ 32명일 때 -> ?번 생존 ]",
                 answer: "1",
                 hint: "사람 수가 '2의 거듭제곱(2, 4, 8, 16, 32...)'일 때는 규칙상 무조건 1번(첫 번째 사람)이 살아남습니다."
             },
             {
-                title: "STAGE 13 : 논리의 함정",
-                desc: "[ 1 = 5 ]\n[ 2 = 25 ]\n[ 3 = 125 ]\n[ 4 = 625 ]\n\n그렇다면,\n[ 5 = ? ]",
+                title: "STAGE 12 : 논리의 거울",
+                desc: "시스템이 당신의 고정관념을 테스트하고 있습니다.\n수식의 결괏값에 집착하지 말고, 명제의 참과 거짓을 있는 그대로 바라보십시오.\n\n[ 1 = 5 ]\n[ 2 = 25 ]\n[ 3 = 125 ]\n[ 4 = 625 ]\n\n질문:\n[ 5 = ? ]",
                 answer: "1",
                 hint: "계산하려 하지 말고 가장 첫 줄을 다시 읽어보세요. '1'이 5라면, 당연히 5는?"
             },
             {
-                title: "FINAL BOSS : 암호의 분해",
-                desc: "[ 15 -> 35 ]\n[ 21 -> 37 ]\n[ 33 -> 311 ]\n[ 143 -> 1113 ]\n\n그렇다면,\n[ 7387 -> ? ]",
+                title: "FINAL BOSS : 최후의 방패",
+                desc: "마침내 코어 시스템에 도달했습니다.\n이 암호는 무작위가 아닌 두 '소수(Prime Number)'의 곱으로 얽혀 있습니다.\n원래의 수에서 두 소수를 분리해내어, 크기가 작은 순서대로 이어 붙이십시오.\n\n[ 15 -> 35 ]\n[ 21 -> 37 ]\n[ 33 -> 311 ]\n[ 143 -> 1113 ]\n\n최종 암호 해제:\n[ 7387 -> ? ]",
                 answer: "8389",
                 hint: "왼쪽 수를 소인수분해하여 두 소수를 찾아 그대로 붙여 쓴 것입니다. (15 = 3x5). 7387을 두 소수로 쪼개보세요. (힌트: 80대의 소수들입니다)"
             }
@@ -367,7 +362,6 @@
             const msgEl = document.getElementById('status-message');
             const userAnswer = inputEl.value.replace(/\s+/g, '').toUpperCase();
             
-            // 7번 한글 정답 처리를 위해 영문 대문자 변환 후 원래 한글과 매칭되도록 보정
             const correctAnswer = stages[currentStage].answer.replace(/\s+/g, '').toUpperCase();
 
             if (userAnswer === correctAnswer) {
